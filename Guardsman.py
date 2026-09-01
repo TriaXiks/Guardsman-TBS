@@ -1,13 +1,13 @@
 import pygame as pg
 from textwrap import wrap
-from settings import *
+from main_scripts.settings import *
 from buildings.astronomican import Astronomican
-from action_menu import Action_menu_HUD
+from main_scripts.action_menu import Action_menu_HUD
 from buildings.farm import Farm
-from label import Label
-from message import Messages
-from button import Buttons
-from map import Map
+from main_scripts.label import Label
+from main_scripts.message import Messages
+from main_scripts.button import Buttons
+from main_scripts.map import Map
 import os
 import sys
 

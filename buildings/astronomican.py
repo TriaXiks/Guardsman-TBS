@@ -1,5 +1,5 @@
 import pygame as pg
-from settings import *
+from main_scripts.settings import *
 
 class Astronomican:
     def __init__(self, sc, img_path):

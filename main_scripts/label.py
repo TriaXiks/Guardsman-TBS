@@ -1,5 +1,5 @@
 import pygame as pg
-from settings import *
+from main_scripts.settings import *
 from textwrap import wrap
 
 class Label:

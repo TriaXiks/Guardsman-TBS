@@ -1,5 +1,5 @@
 import pygame as pg
-from settings import *
+from main_scripts.settings import *
 
 class Action_menu_HUD:
     def __init__(self, sc):

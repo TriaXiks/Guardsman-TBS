@@ -1,5 +1,5 @@
 import pygame as pg
-from settings import *
+from main_scripts.settings import *
 
 class Buttons:
     def __init__(self, sc):
