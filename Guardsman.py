@@ -47,26 +47,27 @@ def menu():
 
 def main():
     global scene, sc
-    events = pg.event.get()
-    clock.tick(FPS)
-    for event in events:
-        if event.type == pg.QUIT:
-            pg.quit()
-            sys.exit()
+    while 1:
+        events = pg.event.get()
+        clock.tick(FPS)
+        for event in events:
+            if event.type == pg.QUIT:
+                pg.quit()
+                sys.exit()
 
-    pg.display.set_caption(f'{TITLE}    FPS: {round(clock.get_fps())}')
-    sc.fill(GRASS)    
-    map.update_map()
-    map.draw_map()
+        pg.display.set_caption(f'{TITLE}    FPS: {round(clock.get_fps())}')
+        sc.fill(GRASS)    
+        map.update_map()
+        map.draw_map()
 
-    msg.draw_msg(events)
+        msg.draw_msg(events)
 
-    if not msg.msg_queue:
-        astronomican.build(map.not_free_tiles, events)
+        if not msg.msg_queue:
+            astronomican.build(map.not_free_tiles, events)
 
-    astronomican.draw_build()
-    
-    pg.display.flip()
+        astronomican.draw_build()
+        
+        pg.display.flip()
 
 def main_tips():
     global scene, sc
@@ -126,8 +127,9 @@ if __name__ == "__main__":
         if scene == "Menu":
             menu()
         elif scene == "Main":
-            main()
+            break
         elif scene == "Help":
             main_tips()
         elif scene == "Building_tips":
             bulding_tips()
+    main()
