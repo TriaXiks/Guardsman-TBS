@@ -2,7 +2,7 @@ import pygame as pg
 from settings import *
 
 class Astronomican:
-    def __init__(self, sc):
+    def __init__(self, sc, img_path):
         self.building_name = 'Астрономикон'
         self.description = 'Сердце и оплот города.'
         self.sc = sc
@@ -11,6 +11,9 @@ class Astronomican:
 
         self.position = None
         self.wait_timer = FPS/10
+        if img_path:
+            self.image = pg.image.load(f'{img_path}').convert_alpha()
+            self.image = pg.transform.scale(self.image, (TILE_SIZE-1, TILE_SIZE-1))
 
     def build(self, tiles, events, mouse_pos):
         if not self.position:
@@ -34,5 +37,8 @@ class Astronomican:
 
     def draw_build(self):
         if self.position:
-            pg.draw.circle(self.sc, BROWN, (self.position[0] * TILE_SIZE + TILE_SIZE//2, self.position[1] * TILE_SIZE + TILE_SIZE//2), TILE_SIZE//2-2)
-            self.sc.blit(pg.font.Font(None, 45).render('А', True, WHITE), (self.position[0] * TILE_SIZE + 9, self.position[1] * TILE_SIZE + 7))    
+            if self.image:
+                self.sc.blit(self.image, (self.position[0] * TILE_SIZE + 1, self.position[1] * TILE_SIZE + 1))
+            else:
+                pg.draw.circle(self.sc, BROWN, (self.position[0] * TILE_SIZE + TILE_SIZE//2, self.position[1] * TILE_SIZE + TILE_SIZE//2), TILE_SIZE//2-2)
+                self.sc.blit(pg.font.Font(None, 45).render('А', True, WHITE), (self.position[0] * TILE_SIZE + 9, self.position[1] * TILE_SIZE + 7))    

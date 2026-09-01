@@ -19,7 +19,7 @@ label = Label(sc)
 btn = Buttons(sc)
 msg = Messages(sc)
 action_menu = Action_menu_HUD(sc)
-astronomican = Astronomican(sc)
+astronomican = Astronomican(sc, 'images/astronomican.png')
 
 def menu():
     global scene, sc
