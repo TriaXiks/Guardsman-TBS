@@ -30,11 +30,9 @@ class Astronomican:
                     if event.type == pg.MOUSEBUTTONUP and event.button == 1:
                         if not is_occupied:
                             self.position = (mouse_x_tile, mouse_y_tile)
-                            tiles.add((mouse_x_tile, mouse_y_tile))
             self.wait_timer = self.wait_timer - 1
 
     def draw_build(self):
         if self.position:
             pg.draw.circle(self.sc, BROWN, (self.position[0] * TILE_SIZE + TILE_SIZE//2, self.position[1] * TILE_SIZE + TILE_SIZE//2), TILE_SIZE//2-2)
             self.sc.blit(pg.font.Font(None, 45).render('А', True, WHITE), (self.position[0] * TILE_SIZE + 9, self.position[1] * TILE_SIZE + 7))    
-                    

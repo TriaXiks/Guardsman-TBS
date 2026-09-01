@@ -36,6 +36,10 @@ class Map:
             for i, char in enumerate(row):
                 self.world_map.add((i * TILE_SIZE, j * TILE_SIZE, char))
 
+    def edit_map(self, tile, symbol):
+        text_map = [list(row) for row in self.text_map]
+        text_map[tile[1]][tile[0]] = symbol
+        self.text_map = ["".join(row) for row in text_map]
 
     def draw_map(self):
         for x, y, c in self.world_map:

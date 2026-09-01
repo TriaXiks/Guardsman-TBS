@@ -24,6 +24,18 @@ class Action_menu_HUD:
                     if self.rect.collidepoint(pg.mouse.get_pos()) == False:
                         self.is_open = False
 
+    def check_pressed(self, events):
+        for event in events:        
+            if event.type == pg.KEYUP:
+                if self.is_open:
+                    tile = self.open_x // TILE_SIZE, self.open_y // TILE_SIZE
+                    if event.key == pg.K_1:
+                        return 1, tile
+                    if event.key == pg.K_2:
+                        return 2, tile
+                    if event.key == pg.K_3:
+                        return 3, tile
+
     def draw_hud(self):
         if self.is_open:
             pg.draw.rect(self.sc, WHITE, self.rect)

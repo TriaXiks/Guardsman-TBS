@@ -8,9 +8,12 @@ class Messages:
         self.sc = sc
         self.font = pg.font.Font(None, 40)
         self.msg_queue = []
+        self.old_msg = []
 
     def add_to_queue(self, text):
-        self.msg_queue.append(text)
+        if text not in self.old_msg:
+            self.msg_queue.append(text)
+            self.old_msg.append(text)
 
     def draw_msg(self, events):
         if self.msg_queue:
