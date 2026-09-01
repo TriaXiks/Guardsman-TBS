@@ -1,0 +1,25 @@
+# Main settings
+WIDTH = 800
+HEIGHT = 800
+FPS = 60
+CURR_VERSION = 'v30.08-2.2'
+TITLE = "Guardsman"
+
+TILE_SIZE = 40
+
+#BLOCKS
+SAND = (239, 228, 176)
+GRASS = (34, 177, 76)
+FOREST = (23, 121, 53)
+WATER = (0, 162, 232)
+STONE = (90, 90, 90)
+
+# COLORS
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+YELLOW = (255, 255, 0)
+GRAY = (120, 120, 120)
+BROWN = (170, 105, 70)
