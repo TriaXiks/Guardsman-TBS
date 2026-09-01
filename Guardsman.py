@@ -2,6 +2,7 @@ import pygame as pg
 from textwrap import wrap
 from settings import *
 from buildings.astronomican import Astronomican
+from action_menu import Action_menu_HUD
 from buildings.farm import Farm
 from label import Label
 from message import Messages
@@ -17,6 +18,7 @@ clock = pg.time.Clock()
 label = Label(sc)
 btn = Buttons(sc)
 msg = Messages(sc)
+action_menu = Action_menu_HUD(sc)
 astronomican = Astronomican(sc)
 
 def menu():
@@ -49,6 +51,7 @@ def main():
     global scene, sc
     while 1:
         events = pg.event.get()
+        mouse_pos = pg.mouse.get_pos()
         clock.tick(FPS)
         for event in events:
             if event.type == pg.QUIT:
@@ -56,16 +59,18 @@ def main():
                 sys.exit()
 
         pg.display.set_caption(f'{TITLE}    FPS: {round(clock.get_fps())}')
-        sc.fill(GRASS)    
+        sc.fill(GRASS)  
+        action_menu.check_open(events, mouse_pos)  
         map.update_map()
         map.draw_map()
 
         msg.draw_msg(events)
 
         if not msg.msg_queue:
-            astronomican.build(map.not_free_tiles, events)
+            astronomican.build(map.not_free_tiles, events, mouse_pos)
 
         astronomican.draw_build()
+        action_menu.draw_hud()
         
         pg.display.flip()
 
@@ -119,9 +124,10 @@ def bulding_tips():
 if __name__ == "__main__":
     pg.init()
     os.system('cls')
-
+    
     msg.add_to_queue('Добро пожаловать!')
-    msg.add_to_queue('Чтобы начать игру тебе нужно выбрать место и построить Астрономикон, используя ПКМ.')
+    msg.add_to_queue('Перед тобой карта мира, с расположенными на ней ресурсами: камнем, водой, песком и так далее.')
+    msg.add_to_queue('Чтобы начать игру тебе нужно выбрать место и построить Астрономикон, используя ЛКМ.')
 
     while 1:
         if scene == "Menu":
