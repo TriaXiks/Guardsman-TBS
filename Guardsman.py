@@ -1,9 +1,9 @@
 import pygame as pg
 from textwrap import wrap
-from main_scripts.settings import *
 from buildings.astronomican import Astronomican
-from main_scripts.action_menu import Action_menu_HUD
 from buildings.farm import Farm
+from main_scripts.settings import *
+from main_scripts.action_menu import Action_menu_HUD
 from main_scripts.label import Label
 from main_scripts.message import Messages
 from main_scripts.button import Buttons
@@ -49,6 +49,16 @@ def menu():
 
 def main():
     global scene, sc
+
+    def build_action(tile):
+        symbol = map.get_symbol(tile)
+
+    def info_action(tile):
+        symbol = map.get_symbol(tile)
+
+    def remove_action(tile):
+        symbol = map.get_symbol(tile)
+
     while 1:
         events = pg.event.get()
         mouse_pos = pg.mouse.get_pos()
@@ -75,6 +85,18 @@ def main():
             msg.add_to_queue('Конечно, пока что вы не можете строить заводы по производству оружия и уничтожать соседние поселения. Но, всегда можно продолжать развиваться.')
             msg.add_to_queue('Постройте вашу первую ферму, чтобы ваше поселение не погибло с голоду и не предало вас.')
 
+
+        if curr_action:
+            action, tile = curr_action
+            # print(f'Действие: {action}\nКлетка: {tile}')
+
+            if action == 1:
+                build_action(tile)
+            if action == 2:
+                info_action(tile)
+            if action == 3:
+                remove_action(tile)
+                        
         astronomican.draw_build()
         action_menu.draw_hud()
         msg.draw_msg(events)
